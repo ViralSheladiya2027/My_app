@@ -16,6 +16,9 @@ const showAlert = (message,type) =>{
     msg:message,
     type:type,
   })
+  setTimeout(() => {
+    setAlert("null")
+  }, 3000);
 }
 
  const toggleMode=()=>{
