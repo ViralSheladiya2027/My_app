@@ -46,46 +46,45 @@ export default function Textform(props) {
     <>
       <div className="container"/>
       <div className="container"style= {{color: props.mode==='dark'?'white':'black'}}>
-        <h1>{props.heading}</h1>
+        <h1 className="mb-4">{props.heading}</h1>
         <div className="mb-3">
           <textarea
             className="form-control"
             id="textArea"
-            style={{backgroundColor: props.mode==='dark'?'gray':'white',color: props.mode==='dark'?'white':'black'}}
+            style={{backgroundColor: props.mode==='dark'?'#162330':'white',color: props.mode==='dark'?'white':'black'}}
             value={text}
             onChange={handleUpChange}
             rows="5"
           ></textarea>
         </div>
-        <div className="button btn btn-primary mx-1" onClick={handleUpClick}>
+        <button disabled={text.length===0} className="button btn btn-primary mx-1 my-1" onClick={handleUpClick}>
           convert to upperCase
-        </div>
-        <div className="button btn btn-primary mx-1" onClick={handleloClick}>
+        </button>
+        <button disabled={text.length===0} className="button btn btn-primary mx-1 my-1" onClick={handleloClick}>
           convert to lowerCase
-        </div>
-        <div
-          className="button btn btn-primary mx-1" onClick={handleCapitalClick}>
+        </button>
+        <button disabled={text.length===0}
+          className="button btn btn-primary mx-1 my-1" onClick={handleCapitalClick}>
           convert to capitalized case
-        </div>
-        <div
-          className="button btn btn-primary mx-1" onClick={handleSpaceClick}>
+        </button>
+        <button disabled={text.length===0}
+          className="button btn btn-primary mx-1 my-1" onClick={handleSpaceClick}>
          Space case
-        </div>
-        <div className="button btn btn-primary mx-1" onClick={handleClearClick}>
+        </button>
+        <button disabled={text.length===0} className="button btn btn-primary mx-1 my-1" onClick={handleClearClick}>
           clear words
-        </div>
+        </button>
       </div>
 
       <div className="container my-2"/>
       <div className="container my-2"style= {{color: props.mode==='dark'?'white':'black'}}>
         <h3>your text summary</h3>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+        {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters
         </p>
-        <p>{0.003 * text.split(" ").length} minutes read</p>
+        <p>{0.003*text.split(/\s+/).filter((element)=>{return element.length!==0}).length} minutes read</p>
         <h3>preview</h3>
-        {/* <p>{text}</p> */}
-        <p>{text.length>0?text:"Enter something in the textbox above to preview it here"}</p>
+        <p>{text.length>0?text:"Nothing to preview"}</p>
       </div>
     </>
   )
