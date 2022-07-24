@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import Alert from './components/Alert';
 import {
   BrowserRouter as Router,
-  Switch,
+  Switch ,
   Route
 } from "react-router-dom";
  
@@ -45,13 +45,12 @@ function App() {
     <Alert alert={alert}/>
     <div className="container my-3">
     <Switch>
-    
-          <Route exact path="/" component={TextForm}>
-            <TextForm showAlert={showAlert} heading="Try TextUtils - word counter, character counter, remove extra spaces" mode={mode}/>
-          </Route>
-          <Route exact path="/about" component={About}>
+    <Route exact path="/about" >
             <About mode={mode} />
             </Route>
+          <Route exact path="/" >
+            <TextForm showAlert={showAlert} heading="Try TextUtils - word counter, character counter, remove extra spaces" mode={mode}/>
+          </Route>
     </Switch>
     </div>
    
@@ -61,3 +60,15 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
